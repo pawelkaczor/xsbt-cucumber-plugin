@@ -1,14 +1,14 @@
 xsbt-cucumber-plugin
 ====================
 
-An [sbt 0.13.0](https://github.com/harrah/xsbt/wiki) plugin for running [Cucumber](http://cukes.info) features.
+An [sbt 0.13.5](https://github.com/sbt/sbt) plugin for running [Cucumber](http://cukes.info) features.
 
 ## Overview ##
 Provides the ability to run Cucumber-jvm within the SBT environment. Originally based on the [cuke4duke-sbt-plugin](https://github.com/rubbish/cuke4duke-sbt-plugin) by rubbish and my original implementation for SBT 0.7.x. Specifics for this release:
 
-* Works with xsbt 0.13.0
-* Works with cucumber-jvm (version 1.1.4 for both Scala 2.9.3 and 2.10)
-* Allows projects compiled and running against Scala 2.9.3 and 2.10 
+* Works with sbt 0.13.5
+* Works with cucumber-jvm (version 1.2.0 for both Scala 2.10.4 and 2.11)
+* Allows projects compiled and running against Scala 2.10.4 and 2.11 
 
 ## Usage - Standalone Task ##
 Install the plugin (see later). By default features files go in the 'src/test/resources' directory. Step definitions go in 'src/test/scala'. Finally from the sbt console call the task:
@@ -115,7 +115,7 @@ For example:
 ## Project Setup ##
 To install the cucumber plugin, add entries to the build plugins file (project/plugins/build.sbt) as follows:
 
-    resolvers += "Templemore Repository" at "http://templemore.co.uk/repo"
+    resolvers += "Templemore Repository" at "https://templemore.co.uk/repo/"
 
     addSbtPlugin("templemore" % "sbt-cucumber-plugin" % "0.8.0")
 
@@ -207,10 +207,15 @@ If none of the above are set to true then the default output is pretty printed f
 
 ## Roadmap ##
 
-This plugin will continue to track releases of both SBT (0.10 and onwards) and Cucumber-jvm.
+This plugin will continue to track releases of both SBT and Cucumber-jvm.
 Requests for features can be posted to the issues list or emailed to the author.
 
 ## Release History ##
+
+### 0.9.0-SNAPSHOT ###
+
+Upgrade to support SBT 0.13.5 and Scala 2.11 as the default versions
+Upgrade support to Cucumber JVM 1.2.0 (for both Scala 2.10 and 2.11)
 
 ### 0.8.0 ###
 
