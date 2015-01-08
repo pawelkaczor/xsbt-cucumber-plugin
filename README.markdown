@@ -3,6 +3,8 @@ xsbt-cucumber-plugin
 
 An [sbt 0.13.5](https://github.com/sbt/sbt) plugin for running [Cucumber](http://cukes.info) features.
 
+_**Note:** The new version (0.9.0-SNAPSHOT which support cucumber-jvm 1.2.0 and Scala 2.11) is not hosted in Templemore repository. See the **Project Setup** section._
+
 ## Overview ##
 Provides the ability to run Cucumber-jvm within the SBT environment. Originally based on the [cuke4duke-sbt-plugin](https://github.com/rubbish/cuke4duke-sbt-plugin) by rubbish and my original implementation for SBT 0.7.x. Specifics for this release:
 
@@ -113,11 +115,22 @@ For example:
     }
 
 ## Project Setup ##
-To install the cucumber plugin, add entries to the build plugins file (project/plugins/build.sbt) as follows:
+To install the cucumber plugin, add entries to the build plugins file (project/plugins.sbt) as follows:
 
-    resolvers += "Templemore Repository" at "https://templemore.co.uk/repo/"
+1. For version 0.9-SNAPSHOT (which support cucumber-jvm 1.2.0 and Scala 2.11)
 
-    addSbtPlugin("templemore" % "sbt-cucumber-plugin" % "0.8.0")
+> resolvers += Resolver.url("sbt-cuke Github Repo",
+   new URL("https://github.com/karahanozturk/xsbt-cucumber-plugin/raw/mvn-repo/"))( Patterns("[organization]/[module]_[scalaVersion]_[sbtVersion]/[revision]/[artifact].[ext]") )
+
+> addSbtPlugin("templemore" % "sbt-cucumber-plugin" % "0.9.0-SNAPSHOT")
+
+&nbsp;&nbsp;&nbsp; _Alternatively, instead of using the Github Repo above, you can download the binaries from the mvn-repo branch and deploy them to your maven repo_
+
+2. For version 0.8 and older:
+
+> resolvers += "Templemore Repository" at "https://templemore.co.uk/repo/"
+
+> addSbtPlugin("templemore" % "sbt-cucumber-plugin" % "0.8.0")
 
 ### Basic Configuration ###
 To add the cucumber plugin settings to a basic project, just add the following to the build.sbt file:
