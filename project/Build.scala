@@ -1,18 +1,23 @@
 import sbt._
 import Keys._
+import xerial.sbt.Sonatype.sonatypeSettings
+import sbtrelease.ReleasePlugin._
 
 object Settings {
-  val buildOrganization = "templemore"
-  val buildScalaVersion = "2.11.2"
-  val crossBuildScalaVersions = Seq("2.10.4", "2.11.2")
-  val buildVersion      = "0.9.0-SNAPSHOT"
+  val buildOrganization = "pl.newicom"
+  val buildScalaVersion = "2.11.5"
+  val crossBuildScalaVersions = Seq("2.10.4", "2.11.5")
+  val buildVersion      = "1.0.0-SNAPSHOT"
 
-  val buildSettings = Defaults.defaultSettings ++
+  val buildSettings = Defaults.defaultSettings ++ Publish.settings ++ releaseSettings ++
                       Seq (organization  := buildOrganization,
                            scalaVersion  := buildScalaVersion,
                            version       := buildVersion,
                            scalacOptions ++= Seq("-deprecation", "-unchecked", "-encoding", "utf8"),
-                           publishTo     := Some(Resolver.file("file",  new File("deploy-repo"))))
+                           publishMavenStyle in ThisBuild := true,
+                           licenses := Seq("Apache 2.0" -> url("http://github.com/pawelkaczor/xsbt-cucumber-plugin/blob/master/LICENSE")),
+                           startYear := Some(2015)
+                      )
 }
 
 object Dependencies {
@@ -23,6 +28,22 @@ object Dependencies {
     "info.cukes" %% "cucumber-scala" % CucumberVersion % "compile"
 
   val testInterface = "org.scala-tools.testing" % "test-interface" % "0.5" % "compile"
+}
+
+object Publish {
+
+  lazy val settings = sonatypeSettings :+ (pomExtra :=
+    <scm>
+      <url>git@github.com:pawelkaczor/xsbt-cucumber-plugin.git</url>
+      <connection>scm:git:git@github.com:pawelkaczor/xsbt-cucumber-plugin.git</connection>
+      <developerConnection>scm:git:git@github.com:pawelkaczor/xsbt-cucumber-plugin.git</developerConnection>
+    </scm>
+      <developers>
+        <developer>
+          <id>newicom</id>
+          <name>Pawel Kaczor</name>
+        </developer>
+      </developers>)
 }
 
 object Build extends Build {

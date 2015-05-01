@@ -11,7 +11,7 @@ import templemore.sbt.util._
  */
 object CucumberPlugin extends Plugin with Integration {
 
-  private val projectVersion = "0.9.0-SNAPSHOT"
+  private val projectVersion = "1.0.0-SNAPSHOT"
 
   type LifecycleCallback = () => Unit
 
@@ -84,11 +84,8 @@ object CucumberPlugin extends Plugin with Integration {
   private def defaultAfter() = {}
 
   val cucumberSettings: Seq[Setting[_]] = Seq(
-    resolvers += "Templemore Repository" at "http://templemore.co.uk/repo"
-      + Resolver.url("sbt-cuke Github Repo",
-      new URL("https://github.com/karahanozturk/xsbt-cucumber-plugin/raw/mvn-repo/"))(Patterns("[organization]/[module]_[scalaVersion]_[sbtVersion]/[revision]/[artifact].[ext]"))
-    ,
-    libraryDependencies += "templemore" %% "sbt-cucumber-integration" % projectVersion % "test",
+    resolvers += Resolver.sonatypeRepo("snapshots"),
+    libraryDependencies += "pl.newicom" %% "sbt-cucumber-integration" % projectVersion % "test",
 
     cucumber <<= cucumberTask(false),
     cucumberDryRun <<= cucumberTask(true),
@@ -129,6 +126,6 @@ object CucumberPlugin extends Plugin with Integration {
 
   val cucumberSettingsWithIntegrationTestPhaseIntegration = cucumberSettings ++ Seq(
     testFrameworks in IntegrationTest += new TestFramework("templemore.sbt.cucumber.CucumberFramework"),
-    libraryDependencies += "templemore" %% "sbt-cucumber-integration" % projectVersion % "it"
+    libraryDependencies += "pl.newicom" %% "sbt-cucumber-integration" % projectVersion % "it"
   )
 }

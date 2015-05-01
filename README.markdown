@@ -1,14 +1,14 @@
 xsbt-cucumber-plugin
 ====================
 
-An [sbt 0.13.5](https://github.com/sbt/sbt) plugin for running [Cucumber](http://cukes.info) features.
+An [sbt 0.13.8](https://github.com/sbt/sbt) plugin for running [Cucumber](http://cukes.info) features.
 
-_**Note:** The new version (0.9.0-SNAPSHOT which support cucumber-jvm 1.2.0 and Scala 2.11) is not hosted in Templemore repository. See the **Project Setup** section._
+_**Note:** The new version (1.0.0-SNAPSHOT which support cucumber-jvm 1.2.0 and Scala 2.11) is not hosted in Templemore repository. See the **Project Setup** section._
 
 ## Overview ##
 Provides the ability to run Cucumber-jvm within the SBT environment. Originally based on the [cuke4duke-sbt-plugin](https://github.com/rubbish/cuke4duke-sbt-plugin) by rubbish and my original implementation for SBT 0.7.x. Specifics for this release:
 
-* Works with sbt 0.13.5
+* Works with sbt 0.13.8
 * Works with cucumber-jvm (version 1.2.0 for both Scala 2.10.4 and 2.11)
 * Allows projects compiled and running against Scala 2.10.4 and 2.11 
 
