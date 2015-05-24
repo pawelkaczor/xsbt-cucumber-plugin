@@ -5,9 +5,9 @@ import sbtrelease.ReleasePlugin._
 
 object Settings {
   val buildOrganization = "pl.newicom"
-  val buildScalaVersion = "2.11.5"
-  val crossBuildScalaVersions = Seq("2.10.4", "2.11.5")
-  val buildVersion      = "1.0.0-SNAPSHOT"
+  val buildScalaVersion = "2.11.6"
+  val crossBuildScalaVersions = Seq("2.10.4", "2.11.6")
+  val buildVersion      = "1.0.0"
 
   val buildSettings = Defaults.defaultSettings ++ Publish.settings ++ releaseSettings ++
                       Seq (organization  := buildOrganization,
