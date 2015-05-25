@@ -11,7 +11,7 @@ import templemore.sbt.util._
  */
 object CucumberPlugin extends Plugin with Integration {
 
-  private val projectVersion = "1.0.0-SNAPSHOT"
+  private val projectVersion = "1.0.0"
 
   type LifecycleCallback = () => Unit
 
