@@ -1,5 +1,5 @@
 import sbt._
-import Keys._
+import sbt.Keys._
 import xerial.sbt.Sonatype.sonatypeSettings
 import sbtrelease.ReleasePlugin._
 
@@ -15,6 +15,7 @@ object Settings {
                            version       := buildVersion,
                            scalacOptions ++= Seq("-deprecation", "-unchecked", "-encoding", "utf8"),
                            publishMavenStyle in ThisBuild := true,
+                           homepage          in ThisBuild := Some(new URL("http://github.com/pawelkaczor/xsbt-cucumber-plugin")),
                            licenses := Seq("Apache 2.0" -> url("http://github.com/pawelkaczor/xsbt-cucumber-plugin/blob/master/LICENSE")),
                            startYear := Some(2015)
                       )
